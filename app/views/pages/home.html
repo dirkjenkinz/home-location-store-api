@@ -1,0 +1,69 @@
+/** * Created by Patrick Whittaker */
+
+{% extends "layout/layout.html" %}
+{% from "input/macro.njk" import govukInput %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+{% from "govuk/components/input/macro.njk" import govukInput %}
+{% from "govuk/components/fieldset/macro.njk" import govukFieldset %}
+{% from "govuk/components/table/macro.njk" import govukTable %}
+{% from "../macros/input-macro.njk" import inputMacro %}
+
+{% block pageTitle %}
+Workers Utility - Update
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form class="form" action="/home" , method="post">
+      <fieldset class="govuk-fieldset">
+        <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+          <h1 class="govuk-fieldset__heading">
+            Find workers by home
+          </h1>
+        </legend>
+
+        {{ inputMacro(
+        name = "home",
+        label = "Home",
+        value = home,
+        errorMessage = errorList.home
+        ) }}
+
+        {{ govukButton({
+        text: "Find workers"
+        }) }}
+      </fieldset>
+    </form>
+    {% if data === 500 %}
+    <p>No workers found</p>
+    {% elseif data !== '' %}
+    <h1>List of workers living in {{home}}</h1>
+    <table class="govuk-table" id="workerTable">
+      <thead class="govuk-table__head">
+        <tr class="govuk-table__row">
+          <th class="govuk-table__header">Name</th>
+          <th class="govuk-table__header">ID</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        {% for worker in data %}
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">{{worker.name}}</td>
+          <td class="govuk-table__cell">{{worker.workerId}}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    {% endif %}
+  </div>
+  <div class="govuk-grid-column-one-third">
+    <form class="form" action="/">
+      {{ govukButton({
+      text: "Return to landing page"
+      }) }}
+    </form>
+  </div>
+</div>
+{% endblock %}

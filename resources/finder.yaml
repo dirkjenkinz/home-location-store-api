@@ -1,0 +1,77 @@
+openapi: 3.0.3
+info:
+  title: Find Workers Service
+  description: Worker finder service for API training course
+  termsOfService: http://example.com/terms/
+  contact:
+    name: API Support
+    url: http://www.example.com/support
+    email: support@example.com
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0.html
+  version: 1.0.0
+servers:
+- url: http://{host}:{port}/{basepath}
+  description: The production API server
+  variables:
+    host:
+      default: localhost
+      description: this value can be assigned by the service provider
+    port:
+      enum:
+        - '8082'
+        - '8002'
+      default: '8082'
+    basepath:
+      default: v1
+paths:
+  /workers/{location}:
+    get:
+      description: Returns all workers locations from the given location or within 50km
+      parameters:
+        - name: location
+          in: path
+          description: home location to search against
+          required: true
+          schema:
+            type: string
+      responses:
+        '200': 
+          description: A list of all matching workers
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Worker'
+components:
+  schemas:
+    Worker:
+      type: object
+      properties:
+        workerId:
+          type: integer
+          format: int64
+        name:
+          type: string
+        home:
+          type: string
+        location:
+          $ref: '#/components/schemas/GeoLocation'
+      required:
+      - name
+      - home
+      - location
+    GeoLocation:
+      type: object
+      properties:
+        latitude:
+          type: number
+          format: float
+        longitude:
+          type: number
+          format: float
+      required:
+      - latitude
+      - longitude

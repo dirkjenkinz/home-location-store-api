@@ -1,0 +1,47 @@
+/** * Created by Patrick Whittaker */
+
+{% extends "layout/layout.html" %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+{% from "govuk/components/fieldset/macro.njk" import govukFieldset %}
+{% from "govuk/components/error-summary/macro.njk" import govukErrorSummary %}
+{% from "../macros/input-macro.njk" import inputMacro %}
+
+{% block pageTitle %}
+Home Location - get a location
+{% endblock %}
+
+{% block content %}
+
+{% if errors %}
+  {{ govukErrorSummary({
+    titleText: "There’s a problem.",
+    errorList: errors
+  }) }}
+{% endif %}
+
+<div class="govuk-grid-column-two-thirds">
+  <div class="govuk-grid-row">
+    
+    <form class="form" action="/location">
+      <fieldset class="govuk-fieldset">
+        <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+          <h1 class="govuk-fieldset__heading">
+            Get a location
+          </h1>
+        </legend>
+        
+        {{ inputMacro(
+          name = "name",
+          label = "Location Name",
+          value = name,
+          errorMessage = errorList.name
+        ) }}
+
+      {{ govukButton({
+        text: "Get location"
+      }) }}
+    </fieldset>
+    </form>
+  </div>
+</div>
+{% endblock %}

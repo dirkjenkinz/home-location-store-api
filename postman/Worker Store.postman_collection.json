@@ -1,0 +1,854 @@
+{
+	"info": {
+		"_postman_id": "0a31b149-76bb-494d-a942-77bbfec12343",
+		"name": "Worker Store",
+		"description": "Worker store for API training course\n\nContact Support:\n Name: API Support\n Email: support@example.com",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "workers",
+			"item": [
+				{
+					"name": "{worker Id}",
+					"item": [
+						{
+							"name": "/workers/:workerId - success finding worker",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/workers/:workerId",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"workers",
+										":workerId"
+									],
+									"variable": [
+										{
+											"key": "host",
+											"value": "{{host}}",
+											"description": "this value can be assigned by the service provider"
+										},
+										{
+											"key": "port",
+											"value": "{{port}}",
+											"description": " (This can only be one of 8080,8000)"
+										},
+										{
+											"key": "basepath",
+											"value": "{{basepath}}"
+										},
+										{
+											"key": "workerId",
+											"value": "21882199",
+											"description": "(Required) Id of worker to return"
+										}
+									]
+								},
+								"description": "returns a single worker"
+							},
+							"response": []
+						},
+						{
+							"name": "/workers/:workerId - invalid Id supplied",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/workers/:workerId",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"workers",
+										":workerId"
+									],
+									"variable": [
+										{
+											"key": "host",
+											"value": "{{host}}",
+											"description": "this value can be assigned by the service provider"
+										},
+										{
+											"key": "port",
+											"value": "{{port}}",
+											"description": " (This can only be one of 8080,8000)"
+										},
+										{
+											"key": "basepath",
+											"value": "{{basepath}}"
+										},
+										{
+											"key": "workerId",
+											"value": "21882199",
+											"description": "(Required) Id of worker to return"
+										}
+									]
+								},
+								"description": "returns a single worker"
+							},
+							"response": []
+						},
+						{
+							"name": "/workers/:workerId - worker not found",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 404\", function () {",
+											"    pm.response.to.have.status(404);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/workers/:workerId",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"workers",
+										":workerId"
+									],
+									"variable": [
+										{
+											"key": "workerId",
+											"value": "2188",
+											"description": "(Required) Id of worker to return"
+										}
+									]
+								},
+								"description": "returns a single worker"
+							},
+							"response": []
+						},
+						{
+							"name": "/workers/:workerId - success finding worker",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/workers/:workerId",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"workers",
+										":workerId"
+									],
+									"variable": [
+										{
+											"key": "host",
+											"value": "{{host}}",
+											"description": "this value can be assigned by the service provider"
+										},
+										{
+											"key": "port",
+											"value": "{{port}}",
+											"description": " (This can only be one of 8080,8000)"
+										},
+										{
+											"key": "basepath",
+											"value": "{{basepath}}"
+										},
+										{
+											"key": "workerId",
+											"value": "21882199",
+											"description": "(Required) Id of worker to delete"
+										}
+									]
+								},
+								"description": "deletes a single worker"
+							},
+							"response": []
+						},
+						{
+							"name": "/workers/:workerId - invalid id supplied",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/workers/:workerId",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"workers",
+										":workerId"
+									],
+									"variable": [
+										{
+											"key": "host",
+											"value": "{{host}}",
+											"description": "this value can be assigned by the service provider"
+										},
+										{
+											"key": "port",
+											"value": "{{port}}",
+											"description": " (This can only be one of 8080,8000)"
+										},
+										{
+											"key": "basepath",
+											"value": "{{basepath}}"
+										},
+										{
+											"key": "workerId",
+											"value": "21882199",
+											"description": "(Required) Id of worker to delete"
+										}
+									]
+								},
+								"description": "deletes a single worker"
+							},
+							"response": []
+						},
+						{
+							"name": "/workers/:workerId - worker not found",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 404\", function () {",
+											"    pm.response.to.have.status(404);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/workers/:workerId",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"workers",
+										":workerId"
+									],
+									"variable": [
+										{
+											"key": "workerId",
+											"value": "21882199",
+											"description": "(Required) Id of worker to delete"
+										}
+									]
+								},
+								"description": "deletes a single worker"
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "/workers - a list of all workers",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/workers",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"workers"
+							],
+							"variable": [
+								{
+									"key": "host",
+									"value": "{{host}}",
+									"description": "this value can be assigned by the service provider"
+								},
+								{
+									"key": "port",
+									"value": "{{port}}",
+									"description": " (This can only be one of 8080,8000)"
+								},
+								{
+									"key": "basepath",
+									"value": "{{basepath}}"
+								}
+							]
+						},
+						"description": "Returns all workers from the worker store"
+					},
+					"response": []
+				},
+				{
+					"name": "/worker - add worker",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"workerId\": 21882101,\n    \"name\": \"Lucy Liu\",\n    \"location\": {\n        \"latitude\": 61.5024551,\n        \"longitude\": 0.1100078\n    },\n    \"home\": \"London\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/workers",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"workers"
+							],
+							"query": [
+								{
+									"key": "workeridxxx",
+									"value": "21882333",
+									"disabled": true
+								}
+							],
+							"variable": [
+								{
+									"key": "host",
+									"value": "{{host}}",
+									"description": "this value can be assigned by the service provider"
+								},
+								{
+									"key": "port",
+									"value": "{{port}}",
+									"description": " (This can only be one of 8080,8000)"
+								},
+								{
+									"key": "basepath",
+									"value": "{{basepath}}"
+								}
+							]
+						},
+						"description": "Adds a new worker to the worker store, returns the worker record"
+					},
+					"response": []
+				},
+				{
+					"name": "/worker - add worker invalid input",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {",
+									"    pm.response.to.have.status(400);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Napoleon Bonaparte\",\n  \"location\": {\n    \"latitude\": -54335529.95467026,\n    \"longitude\": -29949212.309460595\n  },\n  \"workerId\": 78112351\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/workers",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"workers"
+							],
+							"query": [
+								{
+									"key": "workerid",
+									"value": "218820099",
+									"disabled": true
+								}
+							],
+							"variable": [
+								{
+									"key": "host",
+									"value": "{{host}}",
+									"description": "this value can be assigned by the service provider"
+								},
+								{
+									"key": "port",
+									"value": "{{port}}",
+									"description": " (This can only be one of 8080,8000)"
+								},
+								{
+									"key": "basepath",
+									"value": "{{basepath}}"
+								}
+							]
+						},
+						"description": "Adds a new worker to the worker store, returns the worker record"
+					},
+					"response": []
+				},
+				{
+					"name": "/workers - invalid id supplied",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {",
+									"    pm.response.to.have.status(400);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"nostrud reprehenderit in\",\n  \"home\": \"Duis tempor ad velit nos\",\n  \"location\": {\n    \"latitude\": -54335529.95467026,\n    \"longitude\": -29949212.309460595\n  },\n  \"workerId\": \"\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/workers",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"workers"
+							],
+							"variable": [
+								{
+									"key": "host",
+									"value": "{{host}}",
+									"description": "this value can be assigned by the service provider"
+								},
+								{
+									"key": "port",
+									"value": "{{port}}",
+									"description": " (This can only be one of 8080,8000)"
+								},
+								{
+									"key": "basepath",
+									"value": "{{basepath}}"
+								}
+							]
+						},
+						"description": "Update an existing worker record"
+					},
+					"response": []
+				},
+				{
+					"name": "/workers - updated worker record",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Fat Twit Twittaker\",\n  \"home\": \"Glasgow\",\n  \"location\": {\n    \"latitude\": -54335529.95467026,\n    \"longitude\": -29949212.309460595\n  },\n  \"workerId\": 21882102\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/workers",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"workers"
+							],
+							"variable": [
+								{
+									"key": "host",
+									"value": "{{host}}",
+									"description": "this value can be assigned by the service provider"
+								},
+								{
+									"key": "port",
+									"value": "{{port}}",
+									"description": " (This can only be one of 8080,8000)"
+								},
+								{
+									"key": "basepath",
+									"value": "{{basepath}}"
+								}
+							]
+						},
+						"description": "Update an existing worker record"
+					},
+					"response": []
+				},
+				{
+					"name": "/workers - worker not found",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {",
+									"    pm.response.to.have.status(404);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Barney Rubble\",\n  \"home\": \"Bedrock\",\n  \"location\": {\n    \"latitude\": -54335529.95467026,\n    \"longitude\": -29949212.309460595\n  },\n  \"workerId\": 21881111\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/workers",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"workers"
+							],
+							"variable": [
+								{
+									"key": "host",
+									"value": "{{host}}",
+									"description": "this value can be assigned by the service provider"
+								},
+								{
+									"key": "port",
+									"value": "{{port}}",
+									"description": " (This can only be one of 8080,8000)"
+								},
+								{
+									"key": "basepath",
+									"value": "{{basepath}}"
+								}
+							]
+						},
+						"description": "Update an existing worker record"
+					},
+					"response": []
+				},
+				{
+					"name": "/workers - invalid input",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {",
+									"    pm.response.to.have.status(400);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"nostrud reprehenderit in\",\n  \"location\": {\n    \"latitude\": -54335529.95467026,\n    \"longitude\": -29949212.309460595\n  },\n  \"workerId\": \"\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/workers",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"workers"
+							],
+							"variable": [
+								{
+									"key": "host",
+									"value": "{{host}}",
+									"description": "this value can be assigned by the service provider"
+								},
+								{
+									"key": "port",
+									"value": "{{port}}",
+									"description": " (This can only be one of 8080,8000)"
+								},
+								{
+									"key": "basepath",
+									"value": "{{basepath}}"
+								}
+							]
+						},
+						"description": "Update an existing worker record"
+					},
+					"response": []
+				},
+				{
+					"name": "/workers/findByHome/:home - success finding workers",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/workers/findByHome/:home",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"workers",
+								"findByHome",
+								":home"
+							],
+							"variable": [
+								{
+									"key": "host",
+									"value": "{{host}}",
+									"description": "this value can be assigned by the service provider"
+								},
+								{
+									"key": "port",
+									"value": "{{port}}",
+									"description": " (This can only be one of 8080,8000)"
+								},
+								{
+									"key": "basepath",
+									"value": "{{basepath}}"
+								},
+								{
+									"key": "home",
+									"value": "commodo magna veniam consectetur ut",
+									"description": "(Required) home to search against"
+								}
+							]
+						},
+						"description": "returns all workers with a given home value"
+					},
+					"response": []
+				},
+				{
+					"name": "/workers/findByHome/:home - invalid home value supplied",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {",
+									"    pm.response.to.have.status(400);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/workers/findByHome/:home",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"workers",
+								"findByHome",
+								":home"
+							],
+							"variable": [
+								{
+									"key": "home",
+									"value": "commodo magna veniam consectetur ut",
+									"description": "(Required) home to search against"
+								}
+							]
+						},
+						"description": "returns all workers with a given home value"
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "host",
+			"value": "localhost",
+			"type": "any",
+			"description": {
+				"content": "this value can be assigned by the service provider",
+				"type": "text/plain"
+			}
+		},
+		{
+			"key": "port",
+			"value": "8080",
+			"type": "any",
+			"description": {
+				"content": " (This can only be one of 8080,8000)",
+				"type": "text/plain"
+			}
+		},
+		{
+			"key": "basepath",
+			"value": "v1",
+			"type": "any",
+			"description": {
+				"content": "",
+				"type": "text/plain"
+			}
+		},
+		{
+			"key": "baseUrl",
+			"value": "http://{{host}}:{{port}}/{{basepath}}",
+			"type": "string"
+		}
+	]
+}

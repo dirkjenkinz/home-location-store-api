@@ -1,0 +1,51 @@
+/** * Created by Patrick Whittaker */
+
+{% extends "layout/layout.html" %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+{% from "govuk/components/fieldset/macro.njk" import govukFieldset %}
+{% from "govuk/components/error-summary/macro.njk" import govukErrorSummary %}
+{% from "../macros/input-macro.njk" import inputMacro %}
+
+{% block pageTitle %}
+Find Utility - Update
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-column-two-thirds">
+  <div class="govuk-grid-row">
+    <form class="form" action="/change", method="post">
+      {% call govukFieldset({
+        legend: {
+          text: "Change Location Details",
+          classes: "govuk-fieldset__legend--s",
+          isPageHeading: true
+        }
+      }) %}
+
+      <input type='hidden' name='name' id='name' value={{name}}>
+
+      <h1>{{name}}</h1>
+
+      {{ inputMacro(
+        name = "latitude",
+        label = "Latitude",
+        value = latitude,
+        errorMessage = errorList.latitude
+      ) }}
+
+      {{ inputMacro(
+        name = "longitude",
+        label = "Longitude",
+        value = longitude,
+        errorMessage = errorList.longitude
+      ) }}
+
+      {{ govukButton({
+        text: "Change location details"
+      }) }}
+
+    {% endcall %}
+    </form>
+  </div>
+</div>
+{% endblock %}

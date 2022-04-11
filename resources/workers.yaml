@@ -1,0 +1,178 @@
+openapi: 3.0.3
+info:
+  title: Worker Store
+  description: Worker store for API training course
+  termsOfService: http://example.com/terms/
+  contact:
+    name: API Support
+    url: http://www.example.com/support
+    email: support@example.com
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0.html
+  version: 1.0.0
+servers:
+- url: http://{host}:{port}/{basepath}
+  description: The production API server
+  variables:
+    host:
+      default: localhost
+      description: this value can be assigned by the service provider
+    port:
+      enum:
+        - '8080'
+        - '8000'
+      default: '8080'
+    basepath:
+      default: v1
+paths:
+  /workers:
+    get:
+      description: Returns all workers from the worker store
+      responses:
+        '200': 
+          description: A list of all workers
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Worker'
+    post:
+      description: Adds a new worker to the worker store, returns the worker record
+      requestBody:
+        description: Worker object that needs to be added to the store
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Worker'
+      responses:
+        '200':
+          description: Worker added to store
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Worker'
+        '405':
+          description: Invalid input
+          content: {}
+    put:
+      description: Update an existing worker record
+      requestBody:
+        description: Complete Worker object with workerId
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Worker'
+      responses:
+        '200':
+          description: Updated worker record
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Worker'
+        '400':
+          description: Invalid Id supplied
+          content: {}
+        '404':
+          description: Worker not found
+          content: {}
+        '405':
+          description: Invalid input
+          content: {}
+  /workers/{workerId}:
+    get:
+      description: returns a single worker
+      parameters:
+      - name: workerId
+        in: path
+        description: Id of worker to return
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        '200':
+          description: success finding worker
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Worker'
+        '400':
+          description: Invalid Id supplied
+          content: {}
+        '404':
+          description: worker not found
+          content: {}
+    delete:
+      description: deletes a single worker
+      parameters:
+      - name: workerId
+        in: path
+        description: Id of worker to delete
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        '200':
+          description: success finding worker
+          content: {}
+        '400':
+          description: Invalid Id supplied
+          content: {}
+        '404':
+          description: worker not found
+          content: {}
+  /workers/findByHome/{home}:
+    get:
+        description: returns all workers with a given home value
+        parameters:
+        - name: home
+          in: path
+          description: home to search against
+          required: true
+          schema:
+            type: string
+        responses:
+          '200':
+            description: success finding workers
+            content:
+              application/json:
+                schema:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/Worker'
+          '400':
+            description: Invalid home value supplied
+            content: {}
+components:
+  schemas:
+    Worker:
+      type: object
+      properties:
+        workerId:
+          type: integer
+          format: int64
+        name:
+          type: string
+        home:
+          type: string
+        location:
+          $ref: '#/components/schemas/GeoLocation'
+      required:
+      - name
+      - home
+      - location
+    GeoLocation:
+      type: object
+      properties:
+        latitude:
+          type: number
+          format: float
+        longitude:
+          type: number
+          format: float
+      required:
+      - latitude
+      - longitude

@@ -1,0 +1,21 @@
+{% macro inputMacro(name='', label='', width='10', value='', errorMessage='', type=text ) %}
+  {% if errorMessage %}
+    <div class="govuk-form-group govuk-form-group--error">
+      <label class="govuk-label" for="{{name}}">
+        {{ label }}
+      </label>  
+      <p id="{{name}}-error" class="govuk-error-message">
+        <span class="govuk-visually-hidden">Error:</span> {{errorMessage}}
+      </p>
+      <input class="govuk-input govuk-input--width-{{width}} govuk-input--error" 
+        id="{{name}}" name="{{name}}" type={{type}} aria-describedby="{{name}}-error" value="{{value}}">
+    </div>
+  {% else %}
+    <div class="govuk-form-group">
+      <label class="govuk-label" for="{{name}}">
+        {{label}}
+      </label>
+      <input class="govuk-input govuk-input--width-{{width}}" id="{{name}}" name="{{name}}" type="{{type}}" value="{{value}}">
+    </div>
+  {% endif %}
+{% endmacro %}

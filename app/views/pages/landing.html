@@ -1,0 +1,48 @@
+/** * Created by Patrick Whittaker */
+
+{% extends "layout/layout.html" %}
+{% from "input/macro.njk" import govukInput %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+{% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+{% block pageTitle %}
+Workers Utility - Landing
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-column-two-thirds">
+  <div class="govuk-grid-row">
+    <form class="form" action="/choice">
+      {{ govukRadios({
+        idPrefix: "what-do-you-want-to-do",
+        name: "what-do-you-want-to-do",
+        fieldset: {
+          legend: {
+            text: "What do you want to do?",
+              isPageHeading: true,
+            classes: "govuk-fieldset__legend--l"
+          }
+        }, 
+        items: [
+          {
+            value: "all",
+            text: "See all locations",
+            checked: true
+          },
+          {
+            value: "location",
+              text: "Get a location"
+          },
+          {
+            value: "add",
+              text: "Add a location"
+          }
+        ]
+      }) }}
+    {{ govukButton({
+      text: "Continue"
+    }) }}
+    </form>
+  </div>
+</div>
+{% endblock %}

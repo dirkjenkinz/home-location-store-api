@@ -1,0 +1,75 @@
+/** * Created by Patrick Whittaker */
+
+{% extends "layout/layout.html" %}
+{% from "input/macro.njk" import govukInput %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+{% from "govuk/components/table/macro.njk" import govukTable %}
+
+{% block pageTitle %}
+Workers Utility - All Locations
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+    <table class="govuk-table" id="locationTable">
+      <thead class="govuk-table__head">
+      <tr class="govuk-table__row">
+        <th class="govuk-table__header">Location Name</th>
+        <th class="govuk-table__header">Latitude</th>
+        <th class="govuk-table__header">Longitude</th>
+        <th class="govuk-table__header"></th>
+        <th class="govuk-table__header"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      {% for item in list %}
+      <tr class="govuk-table__row" id='line{{loop.index}}'>
+        <td class="govuk-table__cell" id='name{{loop.index}}'>{{item.locationName}}</td>
+        <td class="govuk-table__cell" id='latitude{{loop.index}}'>{{item.location.latitude}}</td>
+        <td class="govuk-table__cell" id='longitude{{loop.index}}'>{{item.location.longitude}}</td>
+        <td class="govuk-table__cell"><button class='govuk-button' data-module="govuk-button" id='chg{{loop.index}}'>Change</button></td>
+        <td class="govuk-table__cell"><button class='govuk-button btn-del' data-module="govuk-button" id='del{{loop.index}}'>Delete</button></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+<div class="govuk-grid-row">
+  <br>
+  <form action="/">
+    {{ govukButton({
+    text: "Return to landing page"
+    }) }}
+  </form>
+</div>
+
+<script nonce = {{nonce}}>
+  const changeItem = (id) => {
+    console.log('id=', id);
+    id = id.substring(3);
+    const g = document.getElementById(`line${id}`);
+    const name = g.cells[0].innerText;
+    const latitude = g.cells[1].innerText;
+    const longitude = g.cells[2].innerText;
+    window.location.replace(`/change?name=${name}&latitude=${latitude}&longitude=${longitude}`);
+  };
+
+  const delItem = (id) => {
+    id = id.substring(3);
+    const g = document.getElementById(`line${id}`);
+    const name = g.cells[0].innerText;
+    window.location.replace(`/delete?name=${name}`);
+  };
+
+  const del1Button = document.getElementById('locationTable');
+    del1Button.addEventListener('click', (event) => {
+    let {id} = event.target;
+    if (id.substring(0,3) === 'del'){
+      delItem(id);
+    } else {
+      changeItem(id);
+    }
+  });
+</script>
+{% endblock %}

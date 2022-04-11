@@ -1,0 +1,54 @@
+{# Example that changes every setting in the template #}
+{% extends "govuk/template.njk" %}
+{% from "header/macro.njk" import govukHeader %}
+
+{% set htmlClasses = "app-html-class" %}
+{% set htmlLang = "en" %}
+{% set assetPath = "/budgeting-loans-ui" %}
+{% set themeColor = "blue" %}
+{% set bodyClasses = "app-body-class" %}
+
+{% block pageTitle %}{% endblock %}
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+
+{% block headIcons %}
+    {{ super() }}
+{% endblock %}
+
+{% block head %}
+  <link href="/css/application.css" rel="stylesheet" />
+  <link href="/css/custom.css" rel="stylesheet" />
+  <script src="jquery-3.6.0.min.js"></script>
+{% endblock %}
+
+{% block bodyStart %}
+
+{% endblock %}
+
+
+{% block header %}
+
+<header class="govuk-header " role="banner" data-module="govuk-header">
+  <div class="govuk-header__container govuk-width-container">
+    <h1>Home Location Store API</h1>
+    </div>
+</header>
+{% endblock %}
+
+{% block main %}
+<div class="govuk-width-container {{ containerClasses }}">
+  {% block beforeContent %}
+  {% endblock %}
+  <main class="govuk-main-wrapper govuk-main-wrapper--l" id="main-content" role="main"{% if mainLang %} lang="{{ mainLang }}"{% endif %}>
+    <div class="govuk-grid-row">
+    {% block content %}
+    {% endblock %}
+    </div>
+  </main>
+</div>
+{% endblock %}
+
+{% block bodyEnd %}
+{% endblock %}
+

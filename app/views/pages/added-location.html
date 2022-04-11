@@ -1,0 +1,70 @@
+/** * Created by Patrick Whittaker */
+
+{% extends "layout/layout.html" %}
+{% from "input/macro.njk" import govukInput %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+{% from "govuk/components/input/macro.njk" import govukInput %}
+{% from "govuk/components/fieldset/macro.njk" import govukFieldset %}
+{% from "govuk/components/table/macro.njk" import govukTable %}
+
+{% block pageTitle %}
+Workers Utility - Add Location Result
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-column-two-thirds">
+  <div class="govuk-grid-row">
+    <form class="form" action="/">
+      {% if response === 200 %}
+        {% set status = 'Location successfully added' %}
+      {% else %}
+        {% set status = 'Failed - location not added' %}
+      {% endif %}
+
+      {% call govukFieldset({
+        legend: {
+          text: status,
+          classes: "govuk-fieldset__legend--l",
+          isPageHeading: true
+         }
+      }) %}
+      {{ govukTable({
+        caption: "Details of Location",
+        captionClasses: "govuk-table__caption--m",
+        firstCellIsHeader: true,
+        rows: [
+          [
+            {
+              text: "Name"
+            },
+            {
+              text: details.name
+            }
+          ],
+          [
+            {
+              text: "Location: Latitude"
+            },
+            {
+              text: details.latitude
+            }
+          ],
+          [
+            {
+              text: "Location: Longitude"
+            },
+            {
+              text: details.longitude
+            }
+          ]
+        ]
+      }) }}
+
+      {{ govukButton({
+        text: "Return to landing page"
+      }) }}
+      {% endcall %}
+    </form>
+  </div>
+</div>
+{% endblock %}

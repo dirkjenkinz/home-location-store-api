@@ -1,0 +1,60 @@
+include:
+ #.pre
+  - project: 'dwp/engineering/pipeline-fragments/credential-check'
+    ref: 2-1-0
+    file: 'ci-include-credential-check.yml'
+  - project: 'dwp/engineering/pipeline-fragments/fragment-version-check'
+    ref: 2-3-0
+    file: 'ci-include-fragment-version-check.yml'
+  # - project: 'dwp/engineering/pipeline-fragments/required-fragment-check'
+  #   ref: 2-4-0
+  #   file: 'ci-include-required-fragment-check.yml'
+  #update-version
+  - project: 'dwp/engineering/pipeline-fragments/update-semver'
+    ref: 4-3-2
+    file: 'ci-include-update-semver.yml'
+  #code-quality
+  - project: 'dwp/engineering/pipeline-fragments/gitleaks'
+    ref: 2-1-5
+    file: 'ci-include-gitleaks.yml'
+
+# code-quality
+  - project: 'dwp/engineering/pipeline-fragments/shell-check'
+    ref: 3-1-0
+    file: 'ci-include-shell-check.yml'
+  - project: 'dwp/engineering/pipeline-fragments/todo-checker'
+    ref: 2-1-0
+    file: 'ci-include-todo-checker.yml'
+  - project: 'dwp/engineering/pipeline-fragments/es-lint'
+    ref: 2-0-0
+    file: 'ci-include-es-lint.yml'
+  - project: 'dwp/engineering/pipeline-fragments/docker-lint'
+    ref: 2-2-0
+    file: 'ci-include-docker-lint.yml'
+
+  #code-test
+  - project: 'dwp/engineering/pipeline-fragments/node-unit-test'
+    ref: 2-0-0
+    file: 'ci-include-node-unit-test.yml'
+  - project: 'dwp/engineering/pipeline-fragments/node-audit'
+    ref: 2-3-0
+    file: 'ci-include-node-audit.yml'
+  - project: 'dwp/engineering/pipeline-fragments/node-outdated'
+    ref: 2-1-0
+    file: 'ci-include-node-outdated.yml'
+
+  # #image-build
+  - project: 'dwp/engineering/pipeline-fragments/docker-build'
+    ref: 3-2-0
+    file: 'ci-include-docker-build.yml'
+
+  # #container-image-test
+  - project: 'dwp/engineering/pipeline-fragments/sast-container-check'
+    ref: 2-4-0
+    file: 'ci-include-sast-container-check.yml'
+  - project: 'dwp/engineering/pipeline-fragments/trivy-container-check'
+    ref: 2-3-0
+    file: 'ci-include-trivy-container-check.yml'
+  - project: 'dwp/engineering/pipeline-fragments/container-structure-test'
+    ref: 2-1-0
+    file: 'ci-include-container-structure-test.yml'
