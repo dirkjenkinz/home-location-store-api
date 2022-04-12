@@ -11,6 +11,14 @@ Find Utility - Update
 {% endblock %}
 
 {% block content %}
+
+{% if errors %}
+  {{ govukErrorSummary({
+    titleText: "There’s a problem.",
+    errorList: errors
+  }) }}
+{% endif %}
+
 <div class="govuk-grid-column-two-thirds">
   <div class="govuk-grid-row">
     <form class="form" action="/change", method="post">

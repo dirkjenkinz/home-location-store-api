@@ -1,7 +1,6 @@
 const express = require('express');
-const router = express.Router();
-
 const { getChoice } = require('../handlers/choice-handler');
 
+const router = express.Router();
 router.get('/', getChoice);
 module.exports = router;

@@ -1,7 +1,6 @@
 const express = require('express');
-const router = express.Router();
-
 const { getAllLocations } = require('../handlers/get-all-handler');
 
+const router = express.Router();
 router.get('/', getAllLocations);
 module.exports = router;

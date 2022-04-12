@@ -8,7 +8,8 @@
   },
   "scripts": {
     "test": "jest",
-    "start": "nodemon app"
+    "start": "nodemon app",
+    "lint": "eslint ."
   },
   "repository": {
     "type": "git",
@@ -20,19 +21,22 @@
     "body-parser": "^1.19.2",
     "express": "^4.17.3",
     "jest": "^27.5.1",
-    "nodemon": "^2.0.15"
-  },
-  "devDependencies": {
-    "axios": "^0.26.1",
-    "crypto": "^1.0.1",
-    "dotenv": "^16.0.0",
-    "govuk-frontend": "^4.0.1",
+    "nodemon": "^2.0.15",
     "helmet": "^5.0.2",
     "helmet-csp": "^3.4.0",
     "nocache": "^3.0.1",
     "nunjucks": "^3.2.3",
+    "axios": "^0.26.1",
+    "dotenv": "^16.0.0",
     "path": "^0.12.7",
     "uuid": "^8.3.2",
     "winston": "^3.6.0"
+  },
+  "devDependencies": {
+    "@dwp/eslint-config-base": "^6.0.0",
+    "crypto": "^1.0.1",
+    "eslint": "^8.13.0",
+    "eslint-config-google": "^0.14.0",
+    "govuk-frontend": "^4.0.1"
   }
 }

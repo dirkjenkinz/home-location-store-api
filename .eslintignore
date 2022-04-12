@@ -1,0 +1,4 @@
+app/public/*
+assets/*
+test/acceptance/allure-results/*
+test/acceptance/target/*

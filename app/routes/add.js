@@ -1,5 +1,6 @@
 const express = require('express');
-const router = express.Router();
 const { postAdd } = require('../handlers/add-handler');
+
+const router = express.Router();
 router.post('/', postAdd);
 module.exports = router;
